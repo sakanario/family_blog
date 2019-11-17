@@ -11,6 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('master');
+// });
+
+//AUDIENCE
+Route::get('/', 'audienceController@index');
+Route::get('/blog/{id}', 'audienceController@show');
+
+//BLOG ADMIN
+//INDEX
+Route::get('/admin', 'adminController@index');
+
+//CREATE
+Route::post('/admin','adminController@store');
+
+//EDIT
+Route::put('/blog/{id}', 'adminController@update');
+
+//DELETE
+Route::delete('/admin/{id}', 'adminController@delete');
+
+Auth::routes();
+Route::get('/laravel', 'HomeController@index')->name('home');
